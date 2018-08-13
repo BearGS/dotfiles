@@ -30,8 +30,9 @@ alias cnpm="nnpm --registry=http://r.tools.elenet.me \
   --disturl=http://r.tools.elenet.me/mirrors/node \
   --userconfig=$HOME/.cnpmrc"
 
-# export NVM_DIR=~/.nvm
-# source ~/.nvm/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
 source /usr/local/share/autojump/autojump.zsh
 # Source Prezto.
