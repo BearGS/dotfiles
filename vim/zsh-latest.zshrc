@@ -8,10 +8,6 @@ alias python2='/System/Library/Frameworks/Python.framework/Versions/2.7/bin/pyth
 alias python3='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3.6'
 alias atom='/Applications/Atom.app/Contents/MacOS/Atom'
 alias c="clear"
-alias e="vim"
-alias fep="cooky"
-alias fep-init="cooky-init"
-alias fep-list="cooky-list"
 DISABLE_LS_COLORS="true"
 # plugins=(git)
 
