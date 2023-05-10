@@ -1,0 +1,85 @@
+# Prezto 
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+export HISTSIZE=1000
+export HISTFILESIZE=10000
+
+# Source
+#source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh # 放到.zpreztorc,这里即可不用
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/autojump/autojump.zsh
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+# Nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source ~/.profile
+
+zplug "zsh-users/zsh-autosuggestions"
+zplug "clvv/fasd"
+zplug "b4b4r07/enhancd"
+zplug "junegunn/fzf"
+zplug "Peltoche/lsd"
+zplug "zsh-users/zsh-history-substring-search"
+
+# Homebrew 
+# Disable homebrew auto update
+export HOMEBREW_NO_AUTO_UPDATE=true
+
+# Tab Completion
+autoload -U compinit
+compinit
+
+# Aliases
+alias e="vim"
+alias gcm="git checkout master"
+alias gcd="git checkout develop"
+alias gst="git status"
+alias f='ranger'
+alias -g ...='../..'
+alias -g ....='../../..'
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+setopt  autocd autopushd 
+d='dirs -v | head -10'
+1='cd -'
+2='cd -2'
+3='cd -3'
+4='cd -4'
+5='cd -5'
+6='cd -6'
+7='cd -7'
+8='cd -8'
+9='cd -9'
+
+######## forget ########
+DISABLE_LS_COLORS="true"
+#export CLICOLOR=1
+#export LSCOLORS=ExFxBxDxCxegedabagacad
+######## forget  ########
+
+### Fforget  ##
+#case $TERM in
+#    xterm*)
+#      precmd () {print -Pn "\e]0;${PWD##*/}\a"}
+#        ;;
+#esac
+
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
+
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
+PATH=$(pyenv root)/shims:$PATH
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
